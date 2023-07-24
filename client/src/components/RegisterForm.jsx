@@ -1,5 +1,6 @@
 import { ErrorMessage, Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
+import { userSignup } from '../services/userApi';
 
 function RegisterForm() {
     //Yup form validation
@@ -29,7 +30,9 @@ function RegisterForm() {
     }
     //submiting the form data
     const onSubmit = (values) => {
-        console.log(values);
+        userSignup(values).then((response)=>{
+            console.log(response);
+        })
     }
 
     //dropdown list

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const axiosInstance = (tokenName) => {
+const axiosInstance = () => {
     const instance = axios.create({
         baseURL: import.meta.env.VITE_SERVER_URL,
         timeout: 5000,
@@ -11,7 +11,7 @@ const axiosInstance = (tokenName) => {
 
     //instance request interceptor 
     instance.interceptors.request.use((request) => {
-        const token = localStorage.getItem(tokenName)
+        const token = localStorage.getItem('jwtToken')
         request.headers.Authorization = `Bearer ${token}`
         return request
     })
