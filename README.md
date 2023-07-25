@@ -9,11 +9,11 @@ Before you can run the app, make sure you have the following installed on your m
 
 1. Clone this repository to your local machine:
 
-   git clone  learnwise_backend
+   git clone  https://github.com/clevinwilson/competitive_programming.git
 
 2. Navigate to the project directory:
 
-   cd learnwise_backend
+   cd competitive_programming
 
 3. Install the dependencies:
 
