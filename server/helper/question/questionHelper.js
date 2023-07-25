@@ -14,6 +14,10 @@ module.exports = questionHelper = {
         })
         return await newQuestion.save()
     },
+    getQuestionDetails:async(questionId)=>{
+        let questionDetails=await questionCollection.findById({_id:questionId});
+        return questionDetails
+    },
     editQuestion: async (userId, questionId, data) => {
         let editQuestion = await questionCollection.updateOne({ _id: questionId, user: userId }, {
             $set: {

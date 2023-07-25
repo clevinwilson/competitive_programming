@@ -13,6 +13,13 @@ const addQuestion = expressAsyncHandler(async (req, res) => {
     res.json({ status: true })
 })
 
+const getQuestionDetails=expressAsyncHandler(async(req,res)=>{
+    const {id}=req.params;
+    if (!id) throw new AppError(400, "bad request");
+    const result=await questionHelper.getQuestionDetails(id);
+    res.json({result})
+})
+
 const editQuestion=expressAsyncHandler(async(req,res)=>{
     const data=req.body;
     const questionId=req.params.id;
@@ -47,6 +54,7 @@ const addTestCase=expressAsyncHandler(async(req,res)=>{
 
 module.exports = {
     addQuestion,
+    getQuestionDetails,
     editQuestion,
     deleteQuestion,
     addTestCase
