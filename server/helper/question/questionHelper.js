@@ -32,5 +32,10 @@ module.exports = questionHelper = {
     deleteQuestion:async(userId,questionId)=>{
         let deleteQuestion=await questionCollection.deleteOne({_id:questionId,user:userId});
         return deleteQuestion;
+    },
+    addTestCase: async (userId, questionId, newTestCase)=>{
+        let editQuestion = await questionCollection.updateOne({ _id: questionId, user: userId }, { $push: { testCases: newTestCase }});
+        return editQuestion;
+
     }
 }

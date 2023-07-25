@@ -33,8 +33,21 @@ const deleteQuestion=expressAsyncHandler(async(req,res)=>{
     res.json({ status: true })
 })
 
+const addTestCase=expressAsyncHandler(async(req,res)=>{
+    const newTestCase = req.body;
+    const questionId = req.params.id;
+    const userId = req.userId;
+
+    console.log(newTestCase,questionId,userId);
+    if (!newTestCase ||!userId || !questionId) throw new AppError(400, "bad request");
+    const status = await questionHelper.addTestCase(userId, questionId, newTestCase);
+    if (!status) throw Error("error occured while adding question");
+    res.json({ status: true })
+})
+
 module.exports = {
     addQuestion,
     editQuestion,
-    deleteQuestion
+    deleteQuestion,
+    addTestCase
 }

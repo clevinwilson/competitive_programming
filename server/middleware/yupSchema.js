@@ -49,8 +49,19 @@ const questionSchema = yup.object().shape({
         .array()
 });
 
+const testCase = yup.object().shape({
+    input: yup
+        .string()
+        .required("Please provide input"),
+    output: yup
+        .string()
+        .required("description is required"),
+
+});
+
 
 module.exports = {
     userSchema,
-    questionSchema
+    questionSchema,
+    testCase
 }
