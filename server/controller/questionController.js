@@ -1,0 +1,40 @@
+const expressAsyncHandler = require("express-async-handler");
+const AppError = require("../utils/error");
+const questionHelper = require("../helper/question/questionHelper");
+
+const addQuestion = expressAsyncHandler(async (req, res) => {
+    const data = req.body
+    const userId = req.userId;
+
+    if (!userId) throw new AppError(400, "bad request");
+    const status = await questionHelper.addQuestion(userId, data);
+
+    if (!status) throw Error("error occured while adding question");
+    res.json({ status: true })
+})
+
+const editQuestion=expressAsyncHandler(async(req,res)=>{
+    const data=req.body;
+    const questionId=req.params.id;
+    const userId=req.userId;
+    if (!userId || !questionId) throw new AppError(400, "bad request");
+
+    const status = await questionHelper.editQuestion(userId,questionId, data);
+    if (!status) throw Error("error occured while adding question");
+    res.json({ status: true })
+})
+
+const deleteQuestion=expressAsyncHandler(async(req,res)=>{
+    const questionId = req.params.id;
+    const userId = req.userId;
+    if (!userId || !questionId) throw new AppError(400, "bad request");
+    const status = await questionHelper.deleteQuestion(userId, questionId);
+    if (!status) throw Error("error occured while adding question");
+    res.json({ status: true })
+})
+
+module.exports = {
+    addQuestion,
+    editQuestion,
+    deleteQuestion
+}

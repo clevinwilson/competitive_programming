@@ -2,7 +2,7 @@ const expressAsyncHandler = require("express-async-handler");
 const AppError = require("../utils/error");
 const createToken = require('../utils/tokenGenerator');
 const userCollection = require('../model/userModel');
-const { findUserByEmail } = require("../helper/authHepler");
+const { findUserByEmail } = require("../helper/user/authHelpler");
 const bcrypt = require('bcrypt');
 
 
@@ -27,7 +27,7 @@ const register = expressAsyncHandler(async (req, res) => {
         res.status(201).json({
             created: true,
             email: user.email,
-            role:user.role,
+            role: user.role,
             token,
         });
     }
@@ -41,12 +41,12 @@ const doLogin = expressAsyncHandler(async (req, res) => {
     if (!user) throw new AppError(409, "user not exists");
 
     const validPassword = await bcrypt.compare(password, user.password);
-    if (!validPassword) throw new AppError(400,"Incorrect username or password")
+    if (!validPassword) throw new AppError(400, "Incorrect username or password")
 
     const token = createToken(user._id);
     res.status(201).json({
         email: user.email,
-        role:user.role,
+        role: user.role,
         token,
     });
 

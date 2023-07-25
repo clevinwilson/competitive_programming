@@ -1,4 +1,4 @@
-const userCollection = require('../model/userModel')
+const userCollection = require('../../model/userModel')
 
 module.exports = {
     findUserByEmail: async (email) => {

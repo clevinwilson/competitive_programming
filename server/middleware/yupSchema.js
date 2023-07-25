@@ -24,6 +24,33 @@ const userSchema = yup.object().shape({
         .required('role is required')
 });
 
+const questionSchema = yup.object().shape({
+    title: yup
+        .string()
+        .trim()
+        .required("Please provide title")
+        .matches(/^[a-zA-Z\s]+$/, "Only alphabets are allowed"),
+    description: yup
+        .string()
+        .required("description is required"),
+    inputFormat: yup
+        .string()
+        .required('inputFormat is required'),
+    outputFormat: yup
+        .string()
+        .required('outputFormat is required'),
+    sampleInput: yup
+        .string()
+        .required('sampleInput is required'),
+    sampleOutput: yup
+        .string()
+        .required('sampleOutput is required'),
+    testCases: yup
+        .array()
+});
+
+
 module.exports = {
-    userSchema
+    userSchema,
+    questionSchema
 }
