@@ -45,11 +45,17 @@ const addTestCase=expressAsyncHandler(async(req,res)=>{
     const questionId = req.params.id;
     const userId = req.userId;
 
-    console.log(newTestCase,questionId,userId);
     if (!newTestCase ||!userId || !questionId) throw new AppError(400, "bad request");
     const status = await questionHelper.addTestCase(userId, questionId, newTestCase);
     if (!status) throw Error("error occured while adding question");
     res.json({ status: true })
+})
+
+//get all questions
+const getAllQuestions=expressAsyncHandler(async(req,res)=>{
+    const result=await questionHelper.getAllQuestions();
+    if (!result) throw Error("error occured while geting the question");
+    res.json({result})
 })
 
 module.exports = {
@@ -57,5 +63,6 @@ module.exports = {
     getQuestionDetails,
     editQuestion,
     deleteQuestion,
-    addTestCase
+    addTestCase,
+    getAllQuestions
 }
