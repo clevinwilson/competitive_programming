@@ -29,3 +29,18 @@ The app should now be running at http://localhost:3000.
 
 ## Signup
 ![register](https://i.yourimageshare.com/ffA0Kro1H4.webp)
+
+## login
+![register](https://i.yourimageshare.com/5vq4SB7SgI.webp)
+
+## Add Question
+![register](https://i.yourimageshare.com/oz5Erz2aHT.webp)
+
+## Get Question details
+![register](https://i.yourimageshare.com/H5KU6CIoc3.webp)
+
+## Add test case
+![register](https://i.yourimageshare.com/lJl1HBx5Ae.webp)
+
+## Submit code
+![register](https://i.yourimageshare.com/L7rISuHzxE.webp)
