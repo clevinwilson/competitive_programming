@@ -20,6 +20,7 @@ const userSchema = yup.object().shape({
         .required('Password is required'),
     role:yup
         .string()
+        .oneOf(['user', 'admin'], 'Role must be either "user" or "admin"')
         .required('role is required')
 });
 
