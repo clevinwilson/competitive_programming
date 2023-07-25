@@ -13,10 +13,10 @@ const userSchema = yup.object().shape({
         .required("email is required"),
     password:yup
         .string()
-        .min(8, 'Password must be at least 8 characters long')
-        .matches(/[a-z]/, 'Password must contain at least one lowercase letter')
-        .matches(/[A-Z]/, 'Password must contain at least one uppercase letter')
-        .matches(/\d/, 'Password must contain at least one digit')
+        // .min(8, 'Password must be at least 8 characters long')
+        // .matches(/[a-z]/, 'Password must contain at least one lowercase letter')
+        // .matches(/[A-Z]/, 'Password must contain at least one uppercase letter')
+        // .matches(/\d/, 'Password must contain at least one digit')
         .required('Password is required'),
     role:yup
         .string()
